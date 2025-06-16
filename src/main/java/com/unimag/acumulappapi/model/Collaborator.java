@@ -2,14 +2,14 @@ package com.unimag.acumulappapi.model;
 
 
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor;
+import lombok.*;
+
 import java.io.Serializable;
 
 @Entity
 @Table(name = "Collaborators")
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class Collaborator {

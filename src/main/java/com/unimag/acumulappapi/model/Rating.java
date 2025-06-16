@@ -2,13 +2,12 @@ package com.unimag.acumulappapi.model;
 
 
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor;
+import lombok.*;
 
 @Entity
 @Table(name = "Ratings")
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class Rating {
@@ -19,7 +18,7 @@ public class Rating {
 
     @ManyToOne
     @JoinColumn(name = "idUser", nullable = false)
-    private Cliente user;
+    private Cliente cliente;
 
     @ManyToOne
     @JoinColumn(name = "idBusiness", nullable = false)

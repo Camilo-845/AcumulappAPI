@@ -3,13 +3,12 @@ package com.unimag.acumulappapi.model;
 import com.unimag.acumulappapi.model.Location;
 import com.unimag.acumulappapi.model.Plan;
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor;
+import lombok.*;
 
 @Entity
 @Table(name = "Business")
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class Business {

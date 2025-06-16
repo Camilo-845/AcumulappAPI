@@ -1,14 +1,14 @@
 package com.unimag.acumulappapi.model;
 
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor;
+import lombok.*;
+
 import java.time.Duration; // For INTERVAL type
 
 @Entity
 @Table(name = "Cards")
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class Card {
