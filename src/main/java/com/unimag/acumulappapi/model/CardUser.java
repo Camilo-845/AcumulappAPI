@@ -6,35 +6,37 @@ import lombok.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "CardsUsers")
+@Table(name = "cardsusers")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class CardUser {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @ManyToOne
-    @JoinColumn(name = "idUser", nullable = false)
-    private Cliente user;
 
     @ManyToOne
-    @JoinColumn(name = "idCard", nullable = false)
+    @JoinColumn(name = "idcard")
     private Card card;
 
     @ManyToOne
-    @JoinColumn(name = "idCardState", nullable = false)
+    @JoinColumn(name = "iduser")
+    private UserEntity userEntity;
+
+    @ManyToOne
+    @JoinColumn(name = "idcardstate")
     private CardState cardState;
 
-    @Column(name = "expirationDate", nullable = false)
+    @Column(name = "expirationdate")
     private LocalDateTime expirationDate;
 
-    @Column(name = "currentStamps", nullable = false)
-    private Integer currentStamps;
+    @Column(name = "currentstamps")
+    private Integer currentStamp;
 
-    @Column(name = "UniqueCode", length = 8)
-    private String uniqueCode;
+    @Column(name = "uniquecode")
+    private String uniCode;
 }

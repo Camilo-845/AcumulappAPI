@@ -3,18 +3,26 @@ package com.unimag.acumulappapi.model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Entity
-@Table(name = "LocationTypes")
+@Table(name = "locationtypes")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class LocationType {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(nullable = false, length = 150)
+
     private String name;
+
+    @OneToMany(mappedBy = "locationType",fetch = FetchType.LAZY)
+    private List<Location> locations;
+
+
 }

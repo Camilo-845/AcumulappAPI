@@ -5,32 +5,35 @@ import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
-@Table(name = "CollaboratorsActivities")
+@Table(name = "collaboratorsactivities")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class CollaboratorActivity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @ManyToOne
-    @JoinColumn(name = "idUser", nullable = false)
-    private Cliente cliente;
 
     @ManyToOne
-    @JoinColumn(name = "idBusiness", nullable = false)
+    @JoinColumn(name = "idbusiness")
     private Business business;
 
     @ManyToOne
-    @JoinColumn(name = "idActionType", nullable = false)
+    @JoinColumn(name = "iduser")
+    private UserEntity userEntity;
+
+    @ManyToOne
+    @JoinColumn(name = "idactiontype")
     private ActionType actionType;
 
-    @Column(name = "oldValue", length = 255)
+    @Column(name = "oldvalue")
     private String oldValue;
 
-    @Column(name = "newValue", length = 255)
+    @Column(name="newvalue")
     private String newValue;
+
 }

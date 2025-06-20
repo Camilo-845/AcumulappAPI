@@ -4,21 +4,22 @@ import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
-@Table(name = "Links")
+@Table(name = "links")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class Link {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+
     @ManyToOne
-    @JoinColumn(name = "idBusiness", nullable = false)
+    @JoinColumn(name = "idbusiness")
     private Business business;
 
-    @Column(nullable = false, length = 500)
     private String value;
 }

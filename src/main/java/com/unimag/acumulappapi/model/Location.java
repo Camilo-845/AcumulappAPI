@@ -3,26 +3,33 @@ package com.unimag.acumulappapi.model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Entity
-@Table(name = "Locations")
+@Table(name = "locations")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class Location {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @ManyToOne
-    @JoinColumn(name = "idFather", nullable = false)
-    private Location fatherLocation; // Self-referencing relationship
+
+    private String name;
+
+    @Column(name = "idfather")
+    private Integer father;
 
     @ManyToOne
-    @JoinColumn(name = "idLocationType", nullable = false)
+    @JoinColumn(name = "idlocationtype")
     private LocationType locationType;
 
-    @Column(nullable = false)
-    private String name;
+    @OneToMany(mappedBy = "location")
+    private List<Business> businessList;
+
+
 }

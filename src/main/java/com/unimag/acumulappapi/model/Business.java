@@ -1,42 +1,58 @@
 package com.unimag.acumulappapi.model;
 
-import com.unimag.acumulappapi.model.Location;
-import com.unimag.acumulappapi.model.Plan;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+import java.util.Set;
+
 @Entity
-@Table(name = "Business")
+@Table(name = "business")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class Business {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+
     @ManyToOne
-    @JoinColumn(name = "idPlan", nullable = false)
+    @JoinColumn(name = "idplan")
     private Plan plan;
 
     @ManyToOne
-    @JoinColumn(name = "idLocation", nullable = false)
+    @JoinColumn(name = "idlocation")
     private Location location;
 
-    @Column(nullable = false, length = 80)
-    private String email;
-
-    @Column(nullable = false, length = 100)
-    private String password;
-
-    @Column(nullable = false, length = 100)
     private String name;
-
-    @Column(name = "logoImage", length = 500)
+    private String email;
+    private String password;
+    private String address;
+    @Column(name = "logoimage")
     private String logoImage;
 
-    @Column(name = "Address", length = 250)
-    private String address;
+    @ManyToMany
+    @JoinTable(name = "businesscategories", joinColumns = @JoinColumn(name = "idbusiness"),inverseJoinColumns = @JoinColumn(name = "idcategory"))
+    private List<Category> categories;
+
+    @OneToMany(mappedBy = "business",fetch = FetchType.LAZY)
+    private List<Link> links;
+
+    @OneToMany(mappedBy = "business",fetch = FetchType.LAZY)
+    private List<Number> numbers;
+
+    @OneToMany(mappedBy = "business",fetch = FetchType.LAZY)
+    private List<CollaboratorActivity> collaboratorActivities;
+
+    @OneToMany(mappedBy = "business",fetch = FetchType.LAZY)
+    private List<Rating> ratings;
+
+    @OneToMany(mappedBy = "business",fetch = FetchType.LAZY)
+    private List<Card> cards;
+
+
 }

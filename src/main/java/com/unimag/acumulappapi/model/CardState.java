@@ -3,18 +3,24 @@ package com.unimag.acumulappapi.model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Entity
-@Table(name = "CardStates")
+@Table(name = "cardstates")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class CardState {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(nullable = false, length = 100)
+
     private String name;
+
+    @OneToMany(mappedBy = "cardState",fetch = FetchType.LAZY)
+    private List<CardUser> cardUsers;
 }
